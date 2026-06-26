@@ -1,4 +1,4 @@
-2.0.1
+2.0.2
 - Reworked screen capture to use the GPU-accelerated Windows.Graphics.Capture API for significantly lower CPU usage (Fix #95).
 - Upgraded to .NET 10.
 - Known limitation: capturing only works within a single monitor. A region spanning two monitors is currently not supported - the part outside the primary monitor stays black.
