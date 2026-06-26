@@ -25,13 +25,27 @@ jobs:
           -p:PublishSingleFile=true
           -p:IncludeNativeLibrariesForSelfExtract=true
           -p:EnableCompressionInSingleFile=true
-          -o publish
+          -o publish-selfcontained
 
-      - name: Rename with version
+      - name: Publish (framework-dependent, win-x64)
+        run: >
+          dotnet publish src/RegionToShareEx/RegionToShareEx.csproj
+          -c Release -r win-x64 --self-contained false
+          -o publish-framework
+
+      - name: Package assets
         shell: pwsh
-        run: Copy-Item publish/RegionToShareEx.exe "RegionToShareEx-${{ github.event.release.tag_name }}-win-x64.exe"
+        run: |
+          $tag = "${{ github.event.release.tag_name }}"
+          Copy-Item publish-selfcontained/RegionToShareEx.exe "RegionToShareEx-$tag-win-x64.exe"
+          $archive = Join-Path $PWD "RegionToShareEx-$tag-win-x64-framework-10-dependent.7z"
+          Push-Location publish-framework
+          7z a "$archive" * | Out-Null
+          Pop-Location
 
       - name: Upload to release
         uses: softprops/action-gh-release@v2
         with:
-          files: RegionToShareEx-${{ github.event.release.tag_name }}-win-x64.exe
+          files: |
+            RegionToShareEx-${{ github.event.release.tag_name }}-win-x64.exe
+            RegionToShareEx-${{ github.event.release.tag_name }}-win-x64-framework-10-dependent.7z
