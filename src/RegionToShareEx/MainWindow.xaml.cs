@@ -37,7 +37,7 @@ public partial class MainWindow
         Settings.PropertyChanged += Settings_PropertyChanged;
     }
 
-    public string Version => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+    public string Version => Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? string.Empty;
 
     public ICollection<string> Resolutions { get; }
 
@@ -179,7 +179,7 @@ public partial class MainWindow
 
         var timer = new DispatcherTimer(DispatcherPriority.ApplicationIdle, Dispatcher.CurrentDispatcher);
 
-        void TimerTick(object sender, EventArgs e)
+        void TimerTick(object? sender, EventArgs e)
         {
             if (_recordingWindow != null)
             {
@@ -273,7 +273,7 @@ public partial class MainWindow
         return false;
     }
 
-    private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    private void Settings_PropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(Settings.ThemeColor))
         {

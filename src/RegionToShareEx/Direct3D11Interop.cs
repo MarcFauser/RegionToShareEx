@@ -72,7 +72,7 @@ internal static class Direct3D11Interop
         try
         {
             var accessGuid = typeof(IDirect3DDxgiInterfaceAccess).GUID;
-            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(inspectable, ref accessGuid, out var accessPtr));
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(inspectable, in accessGuid, out var accessPtr));
             try
             {
                 var access = (IDirect3DDxgiInterfaceAccess)Marshal.GetObjectForIUnknown(accessPtr);
