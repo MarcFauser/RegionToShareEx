@@ -48,8 +48,9 @@ jobs:
           Pop-Location
 
       - name: Upload to release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            RegionToShareEx-${{ github.event.release.tag_name }}-${{ matrix.rid }}.exe
-            RegionToShareEx-${{ github.event.release.tag_name }}-${{ matrix.rid }}-framework-10-dependent.7z
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.event.release.tag_name }}"
+          gh release upload $tag "RegionToShareEx-$tag-${{ matrix.rid }}.exe" "RegionToShareEx-$tag-${{ matrix.rid }}-framework-10-dependent.7z" --clobber --repo ${{ github.repository }}
