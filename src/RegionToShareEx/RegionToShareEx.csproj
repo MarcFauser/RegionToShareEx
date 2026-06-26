@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>RegionToShareEx</AssemblyName>
+    <RootNamespace>RegionToShareEx</RootNamespace>
+    <Product>RegionToShareEx</Product>
+    <Company>Marc Fauser</Company>
+    <Authors>Marc Fauser</Authors>
+    <Copyright>Copyright (c) tom-englert.de and Contributors. Fork maintained by Marc Fauser.</Copyright>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <!-- WPF0001: ThemeMode (Fluent theme) is still marked experimental. -->
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vortice.Direct3D11" Version="3.6.2" />
+  </ItemGroup>
+
+</Project>

@@ -2,11 +2,11 @@ This product bundles the following components under the described licenses:
 
 --------------------------------------------------------------------------------
 
-Tom's Toolbox WPF Styles Module
+Vortice.Windows
 
-Id:        TomsToolbox.Wpf.Styles
-Version:   2.20.0
-Project:   https://github.com/tom-englert/TomsToolbox
-Copyright: © 2012-2024 tom-englert.de
+Id:        Vortice.Direct3D11 (and the Vortice.DXGI, Vortice.Direct3D,
+           Vortice.Mathematics and SharpGen.Runtime packages it depends on)
+Project:   https://github.com/amerkoleci/Vortice.Windows
+Copyright: © Amer Koleci and Contributors
 License:   MIT
 

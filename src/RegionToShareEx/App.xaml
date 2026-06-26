@@ -1,0 +1,10 @@
+﻿<Application x:Class="RegionToShareEx.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnMainWindowClose"
+             ThemeMode="Dark"
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <Color x:Key="ThemeColor">SteelBlue</Color>
+  </Application.Resources>
+</Application>
