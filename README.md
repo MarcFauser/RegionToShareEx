@@ -21,10 +21,10 @@ It's up to your meeting app whether it properly shares this hidden windows conte
 
 ## Installation
 
-Two downloads are offered on the [release page](https://github.com/MarcFauser/RegionToShareEx/releases):
+Each release on the [release page](https://github.com/MarcFauser/RegionToShareEx/releases) provides builds for **win-x64** and **win-arm64**. Pick your architecture, then choose one of:
 
-- **`RegionToShareEx-<version>-win-x64.exe`** — self-contained, **no .NET runtime required**. Just download and run. (Larger download.)
-- **`RegionToShareEx-<version>-win-x64-framework-10-dependent.7z`** — much smaller, contains only the app and its libraries. Requires the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0). Extract it anywhere and run `RegionToShareEx.exe`.
+- **`RegionToShareEx-<version>-<arch>.exe`** — self-contained, **no .NET runtime required**. Just download and run. (Larger download.)
+- **`RegionToShareEx-<version>-<arch>-framework-10-dependent.7z`** — much smaller, contains only the app and its libraries. Requires the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0). Extract it anywhere and run `RegionToShareEx.exe`.
 
 (Building from source requires the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0).)
 

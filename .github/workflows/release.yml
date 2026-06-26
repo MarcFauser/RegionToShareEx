@@ -9,6 +9,9 @@ jobs:
     runs-on: windows-latest
     permissions:
       contents: write   # required to upload assets to the release
+    strategy:
+      matrix:
+        rid: [win-x64, win-arm64]
 
     steps:
       - uses: actions/checkout@v5
@@ -18,27 +21,28 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Publish (self-contained single file, win-x64)
+      - name: Publish (self-contained single file, ${{ matrix.rid }})
         run: >
           dotnet publish src/RegionToShareEx/RegionToShareEx.csproj
-          -c Release -r win-x64 --self-contained true
+          -c Release -r ${{ matrix.rid }} --self-contained true
           -p:PublishSingleFile=true
           -p:IncludeNativeLibrariesForSelfExtract=true
           -p:EnableCompressionInSingleFile=true
           -o publish-selfcontained
 
-      - name: Publish (framework-dependent, win-x64)
+      - name: Publish (framework-dependent, ${{ matrix.rid }})
         run: >
           dotnet publish src/RegionToShareEx/RegionToShareEx.csproj
-          -c Release -r win-x64 --self-contained false
+          -c Release -r ${{ matrix.rid }} --self-contained false
           -o publish-framework
 
       - name: Package assets
         shell: pwsh
         run: |
           $tag = "${{ github.event.release.tag_name }}"
-          Copy-Item publish-selfcontained/RegionToShareEx.exe "RegionToShareEx-$tag-win-x64.exe"
-          $archive = Join-Path $PWD "RegionToShareEx-$tag-win-x64-framework-10-dependent.7z"
+          $rid = "${{ matrix.rid }}"
+          Copy-Item publish-selfcontained/RegionToShareEx.exe "RegionToShareEx-$tag-$rid.exe"
+          $archive = Join-Path $PWD "RegionToShareEx-$tag-$rid-framework-10-dependent.7z"
           Push-Location publish-framework
           7z a "$archive" * | Out-Null
           Pop-Location
@@ -47,5 +51,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            RegionToShareEx-${{ github.event.release.tag_name }}-win-x64.exe
-            RegionToShareEx-${{ github.event.release.tag_name }}-win-x64-framework-10-dependent.7z
+            RegionToShareEx-${{ github.event.release.tag_name }}-${{ matrix.rid }}.exe
+            RegionToShareEx-${{ github.event.release.tag_name }}-${{ matrix.rid }}-framework-10-dependent.7z
