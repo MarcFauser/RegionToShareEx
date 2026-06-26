@@ -1,7 +1,12 @@
 2.0.3
+- Provide native win-arm64 release builds in addition to win-x64.
+
+2.0.2
+- Also publish a framework-dependent .7z (requires the .NET 10 runtime) alongside the self-contained single-file executable.
+
+2.0.1
 - Reworked screen capture to use the GPU-accelerated Windows.Graphics.Capture API for significantly lower CPU usage (Fix #95).
 - Upgraded to .NET 10.
-- Provide native win-arm64 release builds in addition to win-x64.
 - Known limitation: capturing only works within a single monitor. A region spanning two monitors is currently not supported - the part outside the primary monitor stays black.
 
 1.11
