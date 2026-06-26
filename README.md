@@ -18,11 +18,12 @@ It's up to your meeting app whether it properly shares this hidden windows conte
 ## Prerequisites
 
 - Windows 10, version 2004 (build 19041) or newer, or Windows 11
-- The [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
+
+The released `.exe` is self-contained, so no separate .NET runtime needs to be installed. (Building from source requires the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0).)
 
 ## Installation
 
-- Pick the latest binaries from the [release page](https://github.com/MarcFauser/RegionToShareEx/releases).
+- Download the latest `RegionToShareEx-*-win-x64.exe` from the [release page](https://github.com/MarcFauser/RegionToShareEx/releases) and run it.
 
 ## Usage
 
